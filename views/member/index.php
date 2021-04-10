@@ -3,11 +3,9 @@ require_once realpath("vendor/autoload.php");
 
 use App\Controller\ManagerController;
 
-$managerObj = new ManagerController();
-
 // Delete record from managers table
 if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
-
+    $managerObj = new ManagerController();
     $deleteId = $_GET['deleteId'];
     $managerObj->destroy($deleteId);
 }
@@ -55,7 +53,7 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
         </thead>
         <tbody>
 	   <?php
-	   $managers = $managerObj->index();
+	   $managers = $managerObj->displayData();
 	   if ($managers != null) {
 		  foreach ($managers as $manager) {
 			 ?>
@@ -65,11 +63,9 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
                     <td><?php echo $manager['email'] ?></td>
                     <td><?php echo $manager['username'] ?></td>
                     <td>
-                        <a class="btn btn-success" href="show.php?showId=<?php echo $manager['id'] ?>">
-                            <i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp
-                        <a class="btn btn-warning" href="edit.php?editId=<?php echo $manager['id'] ?>">
+                        <a href="edit.php?editId=<?php echo $manager['id'] ?>" style="color:green">
                             <i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp
-                        <a class="btn btn-danger" href="index.php?deleteId=<?php echo $manager['id'] ?>"
+                        <a href="index.php?deleteId=<?php echo $manager['id'] ?>" style="color:red"
                            onclick="confirm('Are you sure want to delete this record')">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>

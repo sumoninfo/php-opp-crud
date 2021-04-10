@@ -40,7 +40,6 @@ if (isset($_POST['update'])) {
         </div>
         <div class="form-group">
             <input type="hidden" name="id" value="<?php echo $manager['id']; ?>">
-            <a href="index.php" class="btn btn-warning pu;ll-left">Back</a>
             <input type="submit" name="update" class="btn btn-primary" style="float:right;" value="Update">
         </div>
     </form>

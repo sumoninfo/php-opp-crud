@@ -2,11 +2,12 @@
 
 require_once realpath("vendor/autoload.php");
 
-$managerObj = new \App\Controller\ManagerController();
+use App\Controller\ManagerController;
 
-// Insert Record in customer table
+// Insert Record in managers table
 if (isset($_POST['submit'])) {
-    $managerObj->insertData($_POST);
+    $managerObj = new ManagerController();
+    $managerObj->store($_POST);
 }
 
 ?>
@@ -17,7 +18,7 @@ if (isset($_POST['submit'])) {
 
 <div class="container">
     <h4 class="text-center">Add Manager</h4>
-    <form action="add.php" method="POST">
+    <form action="create.php" method="POST">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" class="form-control" name="name" placeholder="Enter name" required="">
@@ -34,6 +35,7 @@ if (isset($_POST['submit'])) {
             <label for="password">Password:</label>
             <input type="password" class="form-control" name="password" placeholder="Enter password" required="">
         </div>
+        <a href="index.php" class="btn btn-warning pu;ll-left">Back</a>
         <input type="submit" name="submit" class="btn btn-primary" style="float:right;" value="Submit">
     </form>
 </div>

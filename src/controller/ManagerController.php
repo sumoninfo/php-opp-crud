@@ -2,47 +2,19 @@
 
 namespace App\Controller;
 
-class ManagerController
+use App\Config\Database;
+
+class ManagerController extends Database
 {
-    private $servername = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $database = "php-opp-crud";
-    public $con;
-
-
-    // Database Connection
-    public function __construct()
-    {
-	   $this->con = new \mysqli($this->servername, $this->username, $this->password, $this->database);
-	   if (mysqli_connect_error()) {
-		  trigger_error("Failed to connect to MySQL: " . mysqli_connect_error());
-	   } else {
-		  return $this->con;
-	   }
-    }
-
-    // Insert customer data into customer table
-    public function insertData($post)
-    {
-	   $name = $this->con->real_escape_string($_POST['name']);
-	   $email = $this->con->real_escape_string($_POST['email']);
-	   $username = $this->con->real_escape_string($_POST['username']);
-	   $password = $this->con->real_escape_string(md5($_POST['password']));
-	   $query = "INSERT INTO managers(name,email,username,password) VALUES('$name','$email','$username','$password')";
-	   $sql = $this->con->query($query);
-	   if ($sql == true) {
-		  header("Location:index.php?msg1=insert");
-	   } else {
-		  echo "Registration failed try again!";
-	   }
-    }
-
-    // Fetch customer records for show listing
-    public function displayData()
+    /**
+	* Display a listing of the resource.
+	*
+	* @return array
+	*/
+    public function index()
     {
 	   $query = "SELECT * FROM managers";
-	   $result = $this->con->query($query);
+	   $result = $this->db_connection->query($query);
 	   if ($result->num_rows > 0) {
 		  $data = array();
 		  while ($row = $result->fetch_assoc()) {
@@ -54,11 +26,37 @@ class ManagerController
 	   }
     }
 
-    // Fetch single data for edit from customer table
-    public function displyaRecordById($id)
+    /**
+	* Store a newly created resource in storage.
+	*
+	* @param $post
+	*/
+    public function store($post)
+    {
+	   $name = $this->db_connection->real_escape_string($_POST['name']);
+	   $email = $this->db_connection->real_escape_string($_POST['email']);
+	   $username = $this->db_connection->real_escape_string($_POST['username']);
+	   $password = $this->db_connection->real_escape_string(md5($_POST['password']));
+	   $query = "INSERT INTO managers(name,email,username,password) VALUES('$name','$email','$username','$password')";
+	   $sql = $this->db_connection->query($query);
+	   if ($sql == true) {
+		  header("Location:index.php?msg1=insert");
+	   } else {
+		  echo "Registration failed try again!";
+	   }
+    }
+
+
+    /**
+	* Display the specified resource.
+	*
+	* @param $id
+	* @return array|null
+	*/
+    public function show($id)
     {
 	   $query = "SELECT * FROM managers WHERE id = '$id'";
-	   $result = $this->con->query($query);
+	   $result = $this->db_connection->query($query);
 	   if ($result->num_rows > 0) {
 		  $row = $result->fetch_assoc();
 		  return $row;
@@ -67,16 +65,20 @@ class ManagerController
 	   }
     }
 
-    // Update customer data into customer table
-    public function updateRecord($postData)
+    /**
+	*Update the specified resource in storage.
+	*
+	* @param $postData
+	*/
+    public function update($postData)
     {
-	   $name = $this->con->real_escape_string($_POST['uname']);
-	   $email = $this->con->real_escape_string($_POST['uemail']);
-	   $username = $this->con->real_escape_string($_POST['upname']);
-	   $id = $this->con->real_escape_string($_POST['id']);
+	   $name = $this->db_connection->real_escape_string($_POST['uname']);
+	   $email = $this->db_connection->real_escape_string($_POST['uemail']);
+	   $username = $this->db_connection->real_escape_string($_POST['upname']);
+	   $id = $this->db_connection->real_escape_string($_POST['id']);
 	   if (!empty($id) && !empty($postData)) {
 		  $query = "UPDATE managers SET name = '$name', email = '$email', username = '$username' WHERE id = '$id'";
-		  $sql = $this->con->query($query);
+		  $sql = $this->db_connection->query($query);
 		  if ($sql == true) {
 			 header("Location:index.php?msg2=update");
 		  } else {
@@ -86,16 +88,39 @@ class ManagerController
 
     }
 
-
-    // Delete customer data from customer table
-    public function deleteRecord($id)
+    /**
+	* Remove the specified resource from storage.
+	*
+	* @param $id
+	*/
+    public function destroy($id)
     {
 	   $query = "DELETE FROM managers WHERE id = '$id'";
-	   $sql = $this->con->query($query);
+	   $sql = $this->db_connection->query($query);
 	   if ($sql == true) {
 		  header("Location:index.php?msg3=delete");
 	   } else {
 		  echo "Record does not delete try again";
+	   }
+    }
+
+    /**
+	* Display a listing of the resource.
+	*
+	* @return array
+	*/
+    public function managerByMembers($id)
+    {
+
+	   $query = "SELECT * FROM members where manager_id = $id";
+//	   $query = "SELECT * FROM managers";
+	   $result = $this->db_connection->query($query);
+	   if ($result->num_rows > 0) {
+		  $data = array();
+		  while ($row = $result->fetch_assoc()) {
+			 $data[] = $row;
+		  }
+		  return $data;
 	   }
     }
 }

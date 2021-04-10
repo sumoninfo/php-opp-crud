@@ -2,15 +2,25 @@
 require_once realpath("vendor/autoload.php");
 
 use App\Controller\ManagerController;
+use App\Controller\MemberController;
 
 $managerObj = new ManagerController();
-
+$memberObj = new MemberController();
+$manager_managers = [];
+$showId = '';
+// Edit managers record
+if (isset($_GET['showId']) && !empty($_GET['showId'])) {
+    $showId = $_GET['showId'];
+    $manager = $managerObj->show($showId);
+    $manager_managers = $managerObj->managerByMembers($showId);
+}
 // Delete record from managers table
 if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
-
     $deleteId = $_GET['deleteId'];
-    $managerObj->destroy($deleteId);
+    $manager_id = $_GET['manager_id'];
+    $memberObj->destroy($deleteId, $manager_id);
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -40,8 +50,11 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
             </div>";
     }
     ?>
-    <h4>Managers List
-        <a href="create.php" class="btn btn-primary" style="float:right;">Add New Record</a>
+    <h4><strong><?php echo $manager['name']; ?></strong> members
+        <a href="create-member.php?manager_id=<?php echo $manager['id']; ?>" class="btn btn-primary"
+           style="float:right;">Add New Member</a>
+        <a href="index.php" class="btn btn-warning mr-1"
+           style="float:right;">Back</a>
     </h4>
     <table class="table table-hover">
         <thead>
@@ -55,21 +68,19 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
         </thead>
         <tbody>
 	   <?php
-	   $managers = $managerObj->index();
-	   if ($managers != null) {
-		  foreach ($managers as $manager) {
+
+	   if ($manager_managers != null) {
+		  foreach ($manager_managers as $member) {
 			 ?>
                 <tr>
-                    <td><?php echo $manager['id'] ?></td>
-                    <td><?php echo $manager['name'] ?></td>
-                    <td><?php echo $manager['email'] ?></td>
-                    <td><?php echo $manager['username'] ?></td>
+                    <td><?php echo $member['id'] ?></td>
+                    <td><?php echo $member['name'] ?></td>
+                    <td><?php echo $member['email'] ?></td>
+                    <td><?php echo $member['username'] ?></td>
                     <td>
-                        <a class="btn btn-success" href="show.php?showId=<?php echo $manager['id'] ?>">
-                            <i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp
-                        <a class="btn btn-warning" href="edit.php?editId=<?php echo $manager['id'] ?>">
+                        <a href="edit-member.php?editId=<?php echo $member['id'] ?>" style="color:green">
                             <i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp
-                        <a class="btn btn-danger" href="index.php?deleteId=<?php echo $manager['id'] ?>"
+                        <a href="show.php?deleteId=<?php echo $member['id'] ?>&manager_id=<?php echo $showId ?>" style="color:red"
                            onclick="confirm('Are you sure want to delete this record')">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
