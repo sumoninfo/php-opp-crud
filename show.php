@@ -15,7 +15,7 @@ if (isset($_GET['showId']) && !empty($_GET['showId'])) {
     $manager = $managerObj->show($showId);
     $manager_managers = $managerObj->managerByMembers($showId);
 }
-// Delete record from managers table
+// Delete record from members table
 if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
     $deleteId = $_GET['deleteId'];
     $manager_id = $_GET['manager_id'];
@@ -51,32 +51,34 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Username</th>
+            <th>Phone</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
-	   <?php
-
-	   if ($manager_managers != null) {
-		  foreach ($manager_managers as $member) {
-			 ?>
+	   <?php if ($manager_managers != null): ?>
+		  <?php foreach ($manager_managers as $member) : ?>
                 <tr>
                     <td><?php echo $member['id'] ?></td>
                     <td><?php echo $member['name'] ?></td>
                     <td><?php echo $member['email'] ?></td>
-                    <td><?php echo $member['username'] ?></td>
+                    <td><?php echo $member['phone'] ?></td>
                     <td>
                         <a href="edit-member.php?editId=<?php echo $member['id'] ?>" style="color:green">
                             <i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp
-                        <a href="show.php?deleteId=<?php echo $member['id'] ?>&manager_id=<?php echo $showId ?>" style="color:red"
+                        <a href="show.php?deleteId=<?php echo $member['id'] ?>&manager_id=<?php echo $showId ?>"
+                           style="color:red"
                            onclick="confirm('Are you sure want to delete this record')">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
-		  <?php }
-	   } ?>
+		  <?php endforeach; ?>
+	   <?php else: ?>
+            <tr>
+                <td class="text-center" colspan="5"><strong>No data found!</strong></td>
+            </tr>
+	   <?php endif; ?>
         </tbody>
     </table>
 </div>

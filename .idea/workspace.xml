@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71131ac2-a022-4150-97e4-e59e6379129f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php-opp-crud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php-opp-crud.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create-member.php" beforeDir="false" afterPath="$PROJECT_DIR$/create-member.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit-member.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit-member.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/show.php" beforeDir="false" afterPath="$PROJECT_DIR$/show.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/Database.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ManagerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ManagerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/MemberController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MemberController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/inc/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/inc/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/member/create.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/member/edit.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/member/index.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +53,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Learn/Laravel-Topics" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -72,7 +76,7 @@
       <updated>1618033511692</updated>
       <workItem from="1618033513145" duration="8281000" />
       <workItem from="1618077610241" duration="2214000" />
-      <workItem from="1618141287605" duration="2300000" />
+      <workItem from="1618141287605" duration="4620000" />
     </task>
     <servers />
   </component>
@@ -80,10 +84,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="413" y="65" key="FileChooserDialogImpl" timestamp="1618077850749">
+    <state x="413" y="65" key="FileChooserDialogImpl" timestamp="1618165819544">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="65" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1618077850749" />
+    <state x="413" y="65" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1618165819544" />
     <state x="391" y="165" key="NewPhpClassDialog" timestamp="1618041576640">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -92,9 +96,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="476" y="283" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1618034839908" />
-    <state x="307" y="58" width="752" height="612" key="find.popup" timestamp="1618036062403">
+    <state x="307" y="38" width="916" height="690" key="find.popup" timestamp="1618167517781">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="307" y="58" width="752" height="612" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1618036062403" />
+    <state x="307" y="38" width="916" height="690" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1618167517781" />
   </component>
 </project>

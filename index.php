@@ -5,10 +5,9 @@ require_once realpath("vendor/autoload.php");
 use App\Controller\ManagerController;
 
 $managerObj = new ManagerController();
-
+$managers = $managerObj->index();
 // Delete record from managers table
 if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
-
     $deleteId = $_GET['deleteId'];
     $managerObj->destroy($deleteId);
 }
@@ -37,24 +36,21 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
-            <th>Username</th>
+            <th>Phone</th>
             <th>Action</th>
         </tr>
         </thead>
         <tbody>
-	   <?php
-	   $managers = $managerObj->index();
-	   if ($managers != null) {
-		  foreach ($managers as $manager) {
-			 ?>
+	   <?php if ($managers != null): ?>
+		  <?php foreach ($managers as $manager) : ?>
                 <tr>
                     <td><?php echo $manager['id'] ?></td>
                     <td><?php echo $manager['name'] ?></td>
                     <td><?php echo $manager['email'] ?></td>
-                    <td><?php echo $manager['username'] ?></td>
+                    <td><?php echo $manager['phone'] ?></td>
                     <td>
                         <a class="btn btn-success" href="show.php?showId=<?php echo $manager['id'] ?>">
-                            <i class="fa fa-eye" aria-hidden="true"></i></a>&nbsp
+                            Add Member</a>&nbsp
                         <a class="btn btn-warning" href="edit.php?editId=<?php echo $manager['id'] ?>">
                             <i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp
                         <a class="btn btn-danger" href="index.php?deleteId=<?php echo $manager['id'] ?>"
@@ -63,8 +59,12 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
                         </a>
                     </td>
                 </tr>
-		  <?php }
-	   } ?>
+		  <?php endforeach; ?>
+	   <?php else: ?>
+            <tr>
+                <td class="text-center" colspan="5"><strong>No data found!</strong></td>
+            </tr>
+	   <?php endif; ?>
         </tbody>
     </table>
 </div>

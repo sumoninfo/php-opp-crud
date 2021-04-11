@@ -29,8 +29,8 @@ if (isset($_POST['submit'])) {
             <input type="email" class="form-control" name="email" placeholder="Enter email" required="">
         </div>
         <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" name="username" placeholder="Enter username" required="">
+            <label for="phone">Phone:</label>
+            <input type="text" class="form-control" name="phone" placeholder="Enter phone" required="">
         </div>
         <div class="form-group">
             <label for="password">Password:</label>

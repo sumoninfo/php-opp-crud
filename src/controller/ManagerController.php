@@ -21,8 +21,6 @@ class ManagerController extends Database
 			 $data[] = $row;
 		  }
 		  return $data;
-	   } else {
-		  echo "No found records";
 	   }
     }
 
@@ -36,9 +34,9 @@ class ManagerController extends Database
 
 	   $name = $this->db_connection->real_escape_string($_POST['name']);
 	   $email = $this->db_connection->real_escape_string($_POST['email']);
-	   $username = $this->db_connection->real_escape_string($_POST['username']);
+	   $phone = $this->db_connection->real_escape_string($_POST['phone']);
 	   $password = $this->db_connection->real_escape_string(md5($_POST['password']));
-	   $query = "INSERT INTO managers(name,email,username,password) VALUES('$name','$email','$username','$password')";
+	   $query = "INSERT INTO managers(name,email,phone,password) VALUES('$name','$email','$phone','$password')";
 	   $sql = $this->db_connection->query($query);
 	   if ($sql == true) {
 		  session_start();
@@ -77,10 +75,10 @@ class ManagerController extends Database
     {
 	   $name = $this->db_connection->real_escape_string($_POST['uname']);
 	   $email = $this->db_connection->real_escape_string($_POST['uemail']);
-	   $username = $this->db_connection->real_escape_string($_POST['upname']);
+	   $phone = $this->db_connection->real_escape_string($_POST['upname']);
 	   $id = $this->db_connection->real_escape_string($_POST['id']);
 	   if (!empty($id) && !empty($postData)) {
-		  $query = "UPDATE managers SET name = '$name', email = '$email', username = '$username' WHERE id = '$id'";
+		  $query = "UPDATE managers SET name = '$name', email = '$email', phone = '$phone' WHERE id = '$id'";
 		  $sql = $this->db_connection->query($query);
 		  if ($sql == true) {
 			 session_start();

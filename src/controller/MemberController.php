@@ -21,8 +21,6 @@ class MemberController extends Database
 			 $data[] = $row;
 		  }
 		  return $data;
-	   } else {
-		  echo "No found";
 	   }
     }
 
@@ -36,9 +34,9 @@ class MemberController extends Database
 	   $manager_id = $this->db_connection->real_escape_string($_POST['manager_id']);
 	   $name = $this->db_connection->real_escape_string($_POST['name']);
 	   $email = $this->db_connection->real_escape_string($_POST['email']);
-	   $username = $this->db_connection->real_escape_string($_POST['username']);
+	   $phone = $this->db_connection->real_escape_string($_POST['phone']);
 	   $password = $this->db_connection->real_escape_string(md5($_POST['password']));
-	   $query = "INSERT INTO members(manager_id,name,email,username,password) VALUES('$manager_id','$name','$email','$username','$password')";
+	   $query = "INSERT INTO members(manager_id,name,email,phone,password) VALUES('$manager_id','$name','$email','$phone','$password')";
 	   $sql = $this->db_connection->query($query);
 	   if ($sql == true) {
 		  session_start();
@@ -78,11 +76,11 @@ class MemberController extends Database
 	   $manager_id = $this->db_connection->real_escape_string($_POST['umanager_id']);
 	   $name = $this->db_connection->real_escape_string($_POST['uname']);
 	   $email = $this->db_connection->real_escape_string($_POST['uemail']);
-	   $username = $this->db_connection->real_escape_string($_POST['upname']);
+	   $phone = $this->db_connection->real_escape_string($_POST['upname']);
 	   $id = $this->db_connection->real_escape_string($_POST['id']);
 	   //$id = $this->db_connection->real_escape_string($_POST['id']);
 	   if (!empty($id) && !empty($postData)) {
-		  $query = "UPDATE members SET manager_id = '$manager_id',name = '$name', email = '$email', username = '$username' WHERE id = '$id'";
+		  $query = "UPDATE members SET manager_id = '$manager_id',name = '$name', email = '$email', phone = '$phone' WHERE id = '$id'";
 		  $sql = $this->db_connection->query($query);
 		  if ($sql == true) {
 			 session_start();

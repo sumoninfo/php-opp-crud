@@ -35,8 +35,8 @@ if (isset($_POST['update'])) {
             <input type="email" class="form-control" name="uemail" value="<?php echo $member['email']; ?>" required="">
         </div>
         <div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" class="form-control" name="upname" value="<?php echo $member['username']; ?>"
+            <label for="phone">Phone:</label>
+            <input type="text" class="form-control" name="upname" value="<?php echo $member['phone']; ?>"
                    required="">
         </div>
         <div class="form-group">
