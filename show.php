@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once realpath("vendor/autoload.php");
 
 use App\Controller\ManagerController;
@@ -30,26 +31,14 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
 <br>
 
 <div class="container">
-    <?php
-    if (isset($_GET['msg1']) == "insert") {
-	   echo "<div class='alert alert-success alert-dismissible'>
-              <button type='button' class='close' data-dismiss='alert'>&times;</button>
-             Added successfully
-            </div>";
-    }
-    if (isset($_GET['msg2']) == "update") {
-	   echo "<div class='alert alert-success alert-dismissible'>
-              <button type='button' class='close' data-dismiss='alert'>&times;</button>
-              Updated successfully
-            </div>";
-    }
-    if (isset($_GET['msg3']) == "delete") {
-	   echo "<div class='alert alert-success alert-dismissible'>
-              <button type='button' class='close' data-dismiss='alert'>&times;</button>
-              Deleted successfully
-            </div>";
-    }
-    ?>
+    <?php if (isset($_SESSION['message'])): ?>
+        <div class="alert alert-success alert-dismissible">
+            <button type='button' class='close' data-dismiss='alert'>&times;</button>
+		  <?php echo $_SESSION['message']; ?>
+        </div>
+    <?php endif; ?>
+    <?php unset($_SESSION['message']); ?>
+
     <h4><strong><?php echo $manager['name']; ?></strong> members
         <a href="create-member.php?manager_id=<?php echo $manager['id']; ?>" class="btn btn-primary"
            style="float:right;">Add New Member</a>

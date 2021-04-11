@@ -4,6 +4,7 @@ namespace App\Config;
 
 class Database
 {
+
     private $servername = "localhost";
     private $username = "root";
     private $password = "";
@@ -21,3 +22,5 @@ class Database
 	   }
     }
 }
+
+

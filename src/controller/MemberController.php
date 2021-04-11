@@ -22,7 +22,7 @@ class MemberController extends Database
 		  }
 		  return $data;
 	   } else {
-		  echo "No found records";
+		  echo "No found";
 	   }
     }
 
@@ -41,7 +41,9 @@ class MemberController extends Database
 	   $query = "INSERT INTO members(manager_id,name,email,username,password) VALUES('$manager_id','$name','$email','$username','$password')";
 	   $sql = $this->db_connection->query($query);
 	   if ($sql == true) {
-		  header("Location:show.php?showId=$manager_id&msg1=insert");
+		  session_start();
+		  $_SESSION['message'] = "Added successfully";
+		  header("Location:show.php?showId=$manager_id");
 	   } else {
 		  echo "Failed try again!";
 	   }
@@ -62,7 +64,7 @@ class MemberController extends Database
 		  $row = $result->fetch_assoc();
 		  return $row;
 	   } else {
-		  echo "Record not found";
+		  echo "Not found";
 	   }
     }
 
@@ -83,7 +85,9 @@ class MemberController extends Database
 		  $query = "UPDATE members SET manager_id = '$manager_id',name = '$name', email = '$email', username = '$username' WHERE id = '$id'";
 		  $sql = $this->db_connection->query($query);
 		  if ($sql == true) {
-			 header("Location:show.php?showId=$manager_id&msg1=update");
+			 session_start();
+			 $_SESSION['message'] = "Updated successfully";
+			 header("Location:show.php?showId=$manager_id");
 		  } else {
 			 echo "Updated failed try again!";
 		  }
@@ -101,9 +105,10 @@ class MemberController extends Database
 	   $query = "DELETE FROM members WHERE id = '$id'";
 	   $sql = $this->db_connection->query($query);
 	   if ($sql == true) {
-		  header("Location:show.php?showId=$manager_id&msg1=delete");
+		  $_SESSION['message'] = "Deleted successfully";
+		  header("Location:show.php?showId=$manager_id");
 	   } else {
-		  echo "Record does not delete try again";
+		  echo "Not found!";
 	   }
     }
 }

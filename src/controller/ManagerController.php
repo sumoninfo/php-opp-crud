@@ -33,6 +33,7 @@ class ManagerController extends Database
 	*/
     public function store($post)
     {
+
 	   $name = $this->db_connection->real_escape_string($_POST['name']);
 	   $email = $this->db_connection->real_escape_string($_POST['email']);
 	   $username = $this->db_connection->real_escape_string($_POST['username']);
@@ -40,9 +41,11 @@ class ManagerController extends Database
 	   $query = "INSERT INTO managers(name,email,username,password) VALUES('$name','$email','$username','$password')";
 	   $sql = $this->db_connection->query($query);
 	   if ($sql == true) {
-		  header("Location:index.php?msg1=insert");
+		  session_start();
+		  $_SESSION['message'] = "Added successfully";
+		  header("Location:index.php");
 	   } else {
-		  echo "Registration failed try again!";
+		  echo "Save failed try again!";
 	   }
     }
 
@@ -61,7 +64,7 @@ class ManagerController extends Database
 		  $row = $result->fetch_assoc();
 		  return $row;
 	   } else {
-		  echo "Record not found";
+		  echo "Not found";
 	   }
     }
 
@@ -80,9 +83,11 @@ class ManagerController extends Database
 		  $query = "UPDATE managers SET name = '$name', email = '$email', username = '$username' WHERE id = '$id'";
 		  $sql = $this->db_connection->query($query);
 		  if ($sql == true) {
-			 header("Location:index.php?msg2=update");
+			 session_start();
+			 $_SESSION['message'] = "Updated successfully";
+			 header("Location:index.php");
 		  } else {
-			 echo "Registration updated failed try again!";
+			 echo "Updated failed try again!";
 		  }
 	   }
 
@@ -98,9 +103,10 @@ class ManagerController extends Database
 	   $query = "DELETE FROM managers WHERE id = '$id'";
 	   $sql = $this->db_connection->query($query);
 	   if ($sql == true) {
-		  header("Location:index.php?msg3=delete");
+		  $_SESSION['message'] = "Deleted successfully";
+		  header("Location:index.php");
 	   } else {
-		  echo "Record does not delete try again";
+		  echo "Not found!";
 	   }
     }
 
