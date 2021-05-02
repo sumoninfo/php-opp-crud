@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ac4318b8c982bcdf504cc750e8b22cd0",
+    "content-hash": "f8efc3f9deb6dcb92edf9905be81c092",
     "packages": [
         {
             "name": "graham-campbell/result-type",
