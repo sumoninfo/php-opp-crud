@@ -2,10 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="71131ac2-a022-4150-97e4-e59e6379129f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Config/Database.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Controller/MemberController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/manager/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php-opp-crud.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php-opp-crud.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create-member.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/member/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/create.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/manager/create.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit-member.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/member/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/manager/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/show.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/manager/show.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/Database.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/ManagerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controller/ManagerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/MemberController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterDir="false" />
     </list>
@@ -16,7 +31,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -31,6 +48,12 @@
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/vlucas/phpdotenv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
     </include_path>
   </component>
   <component name="ProjectId" id="1qxuMEUHXNLJPSPNtFGKAVRWisy" />
@@ -45,6 +68,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -53,6 +77,8 @@
       <recent name="D:\xampp_7_4\htdocs\php\php-opp-crud\views\member" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/views/manager" />
+      <recent name="$PROJECT_DIR$/views/member" />
       <recent name="D:\xampp_7_4\htdocs\php\php-opp-crud\src\config" />
     </key>
   </component>
@@ -70,29 +96,33 @@
       <workItem from="1618033513145" duration="8281000" />
       <workItem from="1618077610241" duration="2214000" />
       <workItem from="1618141287605" duration="4620000" />
-      <workItem from="1619929157612" duration="176000" />
+      <workItem from="1619929157612" duration="4000000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="413" y="65" key="FileChooserDialogImpl" timestamp="1618165819544">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="413" y="65" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1618165819544" />
-    <state x="391" y="165" key="NewPhpClassDialog" timestamp="1618041576640">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="391" y="165" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1618041576640" />
-    <state x="476" y="283" key="NewPhpFileDialog" timestamp="1618034839908">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="476" y="283" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1618034839908" />
-    <state x="307" y="38" width="916" height="690" key="find.popup" timestamp="1618167517781">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="307" y="38" width="916" height="690" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1618167517781" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/views/manager/index.php</url>
+          <line>6</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

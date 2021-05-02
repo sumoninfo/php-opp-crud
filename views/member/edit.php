@@ -1,6 +1,6 @@
 <?php
 
-require_once realpath("vendor/autoload.php");
+require_once realpath("../../vendor/autoload.php");
 
 use App\Controller\MemberController;
 
@@ -24,7 +24,7 @@ if (isset($_POST['update'])) {
 
 <div class="container">
     <h4 class="text-center">Edit Member</h4>
-    <form action="edit-member.php" method="POST">
+    <form action="edit.php" method="POST">
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="hidden" name="umanager_id" value="<?php echo $member['manager_id']; ?>">
@@ -41,7 +41,7 @@ if (isset($_POST['update'])) {
         </div>
         <div class="form-group">
             <input type="hidden" name="id" value="<?php echo $member['id']; ?>">
-            <a href="show.php?showId=<?php echo $member['manager_id']; ?>" class="btn btn-warning mr-1">Back</a>
+            <a href="../manager/show.php?showId=<?php echo $member['manager_id']; ?>" class="btn btn-warning mr-1">Back</a>
             <input type="submit" name="update" class="btn btn-primary" style="float:right;" value="Update">
         </div>
     </form>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once realpath("vendor/autoload.php");
+require_once realpath("../../vendor/autoload.php");
 
 use App\Controller\ManagerController;
 use App\Controller\MemberController;
@@ -26,7 +26,7 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include "views/inc/header.php"; ?>
+<?php include "../inc/header.php"; ?>
 <br>
 <br>
 
@@ -40,9 +40,9 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
     <?php unset($_SESSION['message']); ?>
 
     <h4><strong><?php echo $manager['name']; ?></strong> members
-        <a href="create-member.php?manager_id=<?php echo $manager['id']; ?>" class="btn btn-primary"
+        <a href="../member/create.php?manager_id=<?php echo $manager['id']; ?>" class="btn btn-primary"
            style="float:right;">Add New Member</a>
-        <a href="index.php" class="btn btn-warning mr-1"
+        <a href="../../index.php" class="btn btn-warning mr-1"
            style="float:right;">Back</a>
     </h4>
     <table class="table table-hover">
@@ -64,7 +64,7 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
                     <td><?php echo $member['email'] ?></td>
                     <td><?php echo $member['phone'] ?></td>
                     <td>
-                        <a href="edit-member.php?editId=<?php echo $member['id'] ?>" style="color:green">
+                        <a href="../member/edit.php?editId=<?php echo $member['id'] ?>" style="color:green">
                             <i class="fa fa-pencil" aria-hidden="true"></i></a>&nbsp
                         <a href="show.php?deleteId=<?php echo $member['id'] ?>&manager_id=<?php echo $showId ?>"
                            style="color:red"
@@ -82,6 +82,6 @@ if (isset($_GET['deleteId']) && !empty($_GET['deleteId'])) {
         </tbody>
     </table>
 </div>
-<?php include "views/inc/footer.php"; ?>
+<?php include "../inc/footer.php"; ?>
 </body>
 </html>

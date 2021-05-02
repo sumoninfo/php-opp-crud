@@ -1,6 +1,6 @@
 <?php
 
-require_once realpath("vendor/autoload.php");
+require_once realpath("../../vendor/autoload.php");
 
 use App\Controller\ManagerController;
 
@@ -19,7 +19,7 @@ if (isset($_POST['update'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include "views/inc/header.php"; ?>
+<?php include "../inc/header.php"; ?>
 <br>
 
 <div class="container">
@@ -40,11 +40,11 @@ if (isset($_POST['update'])) {
         </div>
         <div class="form-group">
             <input type="hidden" name="id" value="<?php echo $manager['id']; ?>">
-            <a href="index.php" class="btn btn-warning pu;ll-left">Back</a>
+            <a href="../../index.php" class="btn btn-warning pu;ll-left">Back</a>
             <input type="submit" name="update" class="btn btn-primary" style="float:right;" value="Update">
         </div>
     </form>
 </div>
-<?php include "views/inc/footer.php"; ?>
+<?php include "../inc/footer.php"; ?>
 </body>
 </html>
