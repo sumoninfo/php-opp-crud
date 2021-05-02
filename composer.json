@@ -1,4 +1,11 @@
 {
+  "name": "php/php-opp",
+  "type": "project",
+  "description": "PHP opp crud project",
+  "keywords": [
+    "php",
+    "opp"
+  ],
   "autoload": {
     "psr-4": {
       "App\\": "src/"
