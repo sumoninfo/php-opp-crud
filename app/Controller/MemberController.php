@@ -13,15 +13,7 @@ class MemberController extends Database
      */
     public function index()
     {
-        $query = "SELECT * FROM members";
-        $result = $this->db_connection->query($query);
-        if ($result->num_rows > 0) {
-            $data = array();
-            while ($row = $result->fetch_assoc()) {
-                $data[] = $row;
-            }
-            return $data;
-        }
+        return $this->getAllData("SELECT * FROM members");
     }
 
     /**
@@ -36,9 +28,12 @@ class MemberController extends Database
         $email = $this->db_connection->real_escape_string($_POST['email']);
         $phone = $this->db_connection->real_escape_string($_POST['phone']);
         $password = $this->db_connection->real_escape_string(md5($_POST['password']));
-        $query = "INSERT INTO members(manager_id,name,email,phone,password) VALUES('$manager_id','$name','$email','$phone','$password')";
-        $sql = $this->db_connection->query($query);
-        if ($sql == true) {
+
+        $sql = "INSERT INTO members (manager_id,name,email,phone,password) VALUES (?,?,?,?,?)";
+        $statements = $this->db_connection->prepare($sql);
+        $statements->bind_param("issss", $manager_id, $name, $email, $phone, $password);
+
+        if ($statements->execute() == true) {
             session_start();
             $_SESSION['message'] = "Added successfully";
             header('Location: ' . $_SERVER['HTTP_REFERER']);
@@ -57,14 +52,7 @@ class MemberController extends Database
      */
     public function show($id)
     {
-        $query = "SELECT * FROM members WHERE id = '$id'";
-        $result = $this->db_connection->query($query);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            return $row;
-        } else {
-            echo "Not found";
-        }
+        return $this->getFindByIdData("SELECT * FROM members WHERE id = '$id'");
     }
 
     /**
@@ -79,14 +67,15 @@ class MemberController extends Database
         $email = $this->db_connection->real_escape_string($_POST['uemail']);
         $phone = $this->db_connection->real_escape_string($_POST['upname']);
         $id = $this->db_connection->real_escape_string($_POST['id']);
-        //$id = $this->db_connection->real_escape_string($_POST['id']);
         if (!empty($id) && !empty($postData)) {
-            $query = "UPDATE members SET manager_id = '$manager_id',name = '$name', email = '$email', phone = '$phone' WHERE id = '$id'";
-            $sql = $this->db_connection->query($query);
-            if ($sql == true) {
+            $sql = "UPDATE members SET manager_id=?,name=?, email=?, phone=?, password=? WHERE id=?";
+            $statements = $this->db_connection->prepare($sql);
+            $statements->bind_param("issssi", $manager_id, $name, $email, $phone, $password, $id);
+            if ($statements->execute() == true) {
                 session_start();
                 $_SESSION['message'] = "Updated successfully";
-                header("Location:show.php?showId=$manager_id");
+                header('Location: ' . $_SERVER['HTTP_REFERER']);
+                //header("Location:show.php?showId=$manager_id");
             } else {
                 echo "Updated failed try again!";
             }
@@ -101,13 +90,6 @@ class MemberController extends Database
      */
     public function destroy($id, $manager_id)
     {
-        $query = "DELETE FROM members WHERE id = '$id'";
-        $sql = $this->db_connection->query($query);
-        if ($sql == true) {
-            $_SESSION['message'] = "Deleted successfully";
-            header("Location:show.php?showId=$manager_id");
-        } else {
-            echo "Not found!";
-        }
+        return $this->delete("members", $id);
     }
 }

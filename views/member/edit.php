@@ -19,7 +19,7 @@ if (isset($_POST['update'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-<?php include "views/inc/header.php"; ?>
+<?php include "../inc/header.php"; ?>
 <br>
 
 <div class="container">
@@ -41,11 +41,12 @@ if (isset($_POST['update'])) {
         </div>
         <div class="form-group">
             <input type="hidden" name="id" value="<?php echo $member['id']; ?>">
-            <a href="../manager/show.php?showId=<?php echo $member['manager_id']; ?>" class="btn btn-warning mr-1">Back</a>
+            <a href="../manager/show.php?showId=<?php echo $member['manager_id']; ?>"
+               class="btn btn-warning mr-1">Back</a>
             <input type="submit" name="update" class="btn btn-primary" style="float:right;" value="Update">
         </div>
     </form>
 </div>
-<?php include "views/inc/footer.php"; ?>
+<?php include "../inc/footer.php"; ?>
 </body>
 </html>
